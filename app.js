@@ -1,16 +1,20 @@
-const express = require("express");
-const routes = require("./routes")
-
+const express = require("express")
 const app = express();
+const itemsRoutes = require("./routes")
+
 
 app.use(express.json());
-app.use('/items', routes)
-
-//////////////////////////////////////////
+app.use("/items", itemsRoutes);
 
 
-app.listen(3000, function () {
-    console.log("Server is listening on port 3000");
+/** general error handler */
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+
+  return res.json({
+    error: err.message,
   });
-  
-  module.exports = app;
+});
+
+module.exports = app

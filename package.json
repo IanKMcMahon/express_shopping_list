@@ -1,5 +1,8 @@
 {
   "name": "express_shopping_list",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
